@@ -1,6 +1,10 @@
-﻿namespace MyFinanceManager.Application.Transactions.Commands;
+﻿using MediatR;
+using ErrorOr;
+using MyFinanceManager.Domain.Transactions;
 
-public class CreateTransactionCommand
-{
-    
-}
+namespace MyFinanceManager.Application.Transactions.Commands;
+
+public record CreateTransactionCommand(
+    string TransactionType,
+    string Description,
+    double Amount) : IRequest<ErrorOr<Transaction>>;

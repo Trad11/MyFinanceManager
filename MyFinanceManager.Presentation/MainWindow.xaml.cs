@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MyFinanceManager.Presentation;
 
@@ -16,10 +17,9 @@ namespace MyFinanceManager.Presentation;
 /// </summary>
 public partial class MainWindow : Window
 {
-    
-    public MainWindow()
+    public MainWindow(IServiceProvider serviceProvider)
     {
         InitializeComponent();
+        DataContext = serviceProvider.GetRequiredService<MainWindowViewModel>();
     }
-    
 }

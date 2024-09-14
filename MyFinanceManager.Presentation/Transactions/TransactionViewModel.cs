@@ -42,7 +42,7 @@ public class TransactionViewModel : ObservableObject
     {
         _mediator = mediator;
         CreateTransactionCommand = new AsyncRelayCommand(CreateTransaction);
-        // GetTransactionCommand = new RelayCommand(GetTransaction);
+        GetTransactionCommand = new AsyncRelayCommand(GetTransaction);
     }
 
     // Command Methods
@@ -67,15 +67,15 @@ public class TransactionViewModel : ObservableObject
         Description = string.Empty;
     }
 
-    // private void GetTransaction()
-    // {
-    //     // For demonstration, we'll retrieve a dummy transaction.
-    //     // TODO: Retrieve the transaction from a data source.
-    //     RetrievedTransaction = new Transaction
-    //     {
-    //         Id = 1,
-    //         Amount = 100.00m,
-    //         Description = "Sample Transaction"
-    //     };
-    // }
+    private async Task GetTransaction()
+    {
+        // TODO: Retrieve the transaction from a data source.
+        RetrievedTransaction = new Transaction
+        {
+            Id = Guid.NewGuid(),
+            TransactionType = "Income",
+            Description = "Sample Transaction",
+            Amount = 100
+        };
+    }
 }

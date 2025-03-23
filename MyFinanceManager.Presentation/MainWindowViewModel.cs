@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
+using MyFinanceManager.Presentation.Livecharts;
 using MyFinanceManager.Presentation.Transactions;
 
 namespace MyFinanceManager.Presentation;
@@ -19,12 +20,13 @@ public class MainWindowViewModel : ObservableObject
 
     public ICommand ShowTransactionViewCommand { get; }
     public ICommand ShowHomeViewCommand { get; }
-
+    public ICommand ShowLivechartsViewCommand { get; }
     public MainWindowViewModel(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         ShowTransactionViewCommand = new RelayCommand(ShowTransactionView);
         ShowHomeViewCommand = new RelayCommand(ShowHomeView);
+        ShowLivechartsViewCommand = new RelayCommand(ShowLivechartsView);
     }
     
     private void ShowTransactionView()
@@ -35,5 +37,10 @@ public class MainWindowViewModel : ObservableObject
     private void ShowHomeView()
     {
         CurrentViewModel = _serviceProvider.GetRequiredService<HomeViewModel>();
+    }
+    
+    private void ShowLivechartsView()
+    {
+        CurrentViewModel = _serviceProvider.GetRequiredService<SampleLivechartViewModel>();
     }
 }

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyFinanceManager.Presentation"
         xmlns:transactions="clr-namespace:MyFinanceManager.Presentation.Transactions"
+        xmlns:livecharts="clr-namespace:MyFinanceManager.Presentation.Livecharts"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:HomeViewModel}">
@@ -14,9 +16,15 @@
         <DataTemplate DataType="{x:Type transactions:TransactionViewModel}">
             <transactions:TransactionView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type livecharts:SampleLivechartViewModel}">
+            <livecharts:SampleLivechartView />
+        </DataTemplate>
     </Window.Resources>
     <StackPanel>
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <ContentControl Content="{Binding CurrentViewModel}" 
+                        Height="300" 
+                        Width="500" 
+                        HorizontalAlignment="Center" />
         
         <Button Content="Show New Transaction View"
                 Command="{Binding ShowTransactionViewCommand}"
@@ -24,6 +32,10 @@
         
         <Button Content="Show New Home View"
                 Command="{Binding ShowHomeViewCommand}"
+                Margin="10"/>
+       
+        <Button Content="Show Livecharts View"
+                Command="{Binding ShowLivechartsViewCommand}"
                 Margin="10"/>
     </StackPanel>
 </Window>

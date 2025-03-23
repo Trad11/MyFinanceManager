@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using MyFinanceManager.Application;
+using MyFinanceManager.Presentation.Livecharts;
 using MyFinanceManager.Presentation.Transactions;
 
 namespace MyFinanceManager.Presentation;
@@ -24,6 +25,8 @@ public partial class App : System.Windows.Application
         services.AddScoped<HomeViewModel>();
         services.AddScoped<TransactionView>();
         services.AddScoped<TransactionViewModel>();
+        services.AddScoped<SampleLivechartView>();
+        services.AddScoped<SampleLivechartViewModel>();
         services.AddApplication();
         
         ServiceProvider serviceProvider = services.BuildServiceProvider();
